@@ -8,10 +8,21 @@
 
 config_version=4
 
+_global_script_classes=[ {
+	"base": "Reference",
+	"class": "Nodo",
+	"language": "GDScript",
+	"path": "res://dominio/nodo.gd"
+} ]
+_global_script_class_icons={
+	"Nodo": ""
+}
+
 [application]
 
+config/name="POC_Red"
 run/main_scene="res://tests/tests.tscn"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/gut/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/gut/plugin.cfg", "res://addons/godot-uuid/plugin.cfg" )
