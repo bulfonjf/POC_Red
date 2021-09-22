@@ -78,7 +78,7 @@ POC_Red es un modulo que permite gestionar redes y nodos y asi transmitir mensaj
 		- etiquetas
 		- red en la que esta registrado (puede ser ninguna)
 		- modo de comunicacion
-			- rcp
+			- rpc
 			- referencia
 	- Funciones
 		- registrarse en red
@@ -107,4 +107,3 @@ POC_Red es un modulo que permite gestionar redes y nodos y asi transmitir mensaj
 			- pendiente 
 			- enviado
 			- envio fallido
-
