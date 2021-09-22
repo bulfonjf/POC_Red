@@ -23,6 +23,10 @@ _global_script_class_icons={
 config/name="POC_Red"
 run/main_scene="res://tests/tests.tscn"
 
+[autoload]
+
+CrearNodo="*res://api/crear_nodo.gd"
+
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/gut/plugin.cfg" )
