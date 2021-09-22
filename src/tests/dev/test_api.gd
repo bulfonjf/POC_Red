@@ -2,19 +2,43 @@ extends "res://addons/gut/test.gd"
 
 const uuid = preload('res://tools/uuid.gd')
 
-func test_crear_nodo():
-	# Arrange
-	var nombre_nodo = "cliente"
-	var id_nodo = uuid.v4()
-	var ip_nodo = "192.168.0.1"
-	var puerto_nodo = "8000"
+func test_crear_identificador():
+	# Arrenge
+	var nombre = "pepito"
+	var id = uuid.v4()
 
 	# Act
-	var nodo = Api.CrearNodo(nombre_nodo, id_nodo, ip_nodo, puerto_nodo)
+	var identificador = Api.CrearIdentificador(nombre, id)
 
 	# Assert
-	assert_is(nodo, Nodo)
-	assert_eq(nodo.nombre, nombre_nodo)
-	assert_eq(nodo.id, id_nodo)
-	assert_eq(nodo.ip, ip_nodo)
-	assert_eq(nodo.puerto, puerto_nodo)
+	assert_is(identificador, Identificador)
+	assert_eq(identificador.nombre, nombre)
+	assert_eq(identificador.id, id)
+
+# func test_registrar_nodo():
+# 	# Arrange
+# 	var identificador = crear_identificador_default()
+
+# 	# Act
+# 	var estado = Api.RegistrarNodo(identificador)
+
+# 	# Assert
+# 	assert_eq(estado, "registro enviado exito")
+
+# func test_enviar_mesaje():
+# 	# Arrange
+# 	var identificador = crear_identificador_default()
+# 	var msj = "this is a test"
+
+# 	# Act
+# 	Api.EnviarMensaje(msj)
+
+# 	# Assert
+
+	
+# func crear_identificador_default() -> Identificador:
+# 	var nombre = "cliente"
+# 	var id = uuid.v4()
+# 	var identificador = Api.CrearIdentificador(nombre, id)
+
+# 	return identificador 
