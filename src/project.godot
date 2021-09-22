@@ -25,7 +25,7 @@ run/main_scene="res://tests/tests.tscn"
 
 [autoload]
 
-CrearNodo="*res://api/crear_nodo.gd"
+Api="*res://api/api.gd"
 
 [editor_plugins]
 

@@ -10,7 +10,7 @@ func test_crear_nodo():
 	var puerto_nodo = "8000"
 
 	# Act
-	var nodo = CrearNodo.Do(nombre_nodo, id_nodo, ip_nodo, puerto_nodo)
+	var nodo = Api.CrearNodo(nombre_nodo, id_nodo, ip_nodo, puerto_nodo)
 
 	# Assert
 	assert_is(nodo, Nodo)
