@@ -10,12 +10,30 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Reference",
+"class": "EstadoConexion",
+"language": "GDScript",
+"path": "res://dominio/estado_conexion.gd"
+}, {
+"base": "Reference",
 "class": "Identificador",
 "language": "GDScript",
 "path": "res://dominio/identificador.gd"
+}, {
+"base": "Reference",
+"class": "Red",
+"language": "GDScript",
+"path": "res://dominio/red.gd"
+}, {
+"base": "Reference",
+"class": "RedClienteMock",
+"language": "GDScript",
+"path": "res://tests/dev/mocks/red_cliente_mock.gd"
 } ]
 _global_script_class_icons={
-"Identificador":""
+"EstadoConexion": "",
+"Identificador": "",
+"Red": "",
+"RedClienteMock": ""
 }
 
 [application]
@@ -26,6 +44,7 @@ run/main_scene="res://tests/tests.tscn"
 [autoload]
 
 Api="*res://api/api.gd"
+NodoCliente="*res://dominio/nodo_cliente.gd"
 
 [editor_plugins]
 

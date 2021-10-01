@@ -2,43 +2,62 @@ extends "res://addons/gut/test.gd"
 
 const uuid = preload('res://tools/uuid.gd')
 
-func test_crear_identificador():
-	# Arrenge
-	var nombre = "pepito"
-	var id = uuid.v4()
+func test_conectar():
+	var test_suite = [
+		{
+			"name": "conectar - conexion exitosa",
+			"description": "valores validos",
+			"testData": {
+				"nombre":"alexis",
+				"id":"134",
+				"ip":"111",
+				"puerto":8080
+			},
+			"crear_red_cliente": funcref(self, "crear_red_cliente_conectado"),
+			"resultado_esperado": EstadoConexion.new(true)
+		},
+		{
+			"name": "conectar - conexion fallida",
+			"description": "valores validos, conexion sin exito",
+			"testData": {
+				"nombre":"alexis",
+				"id":"134",
+				"ip":"111",
+				"puerto":8080
+			},
+			"crear_red_cliente": funcref(self, "crear_red_cliente_no_conectado"),
+			"resultado_esperado": EstadoConexion.new(false)
+		}
+	]
 
-	# Act
-	var identificador = Api.CrearIdentificador(nombre, id)
+	print("Test Cases")
 
-	# Assert
-	assert_is(identificador, Identificador)
-	assert_eq(identificador.nombre, nombre)
-	assert_eq(identificador.id, id)
+	for tc in test_suite:
+		print(tc.name)
 
-# func test_registrar_nodo():
-# 	# Arrange
-# 	var identificador = crear_identificador_default()
+		# Arrenge
+		var red_cliente_mock = tc.crear_red_cliente.call_func()
+		NodoCliente.Initialize(red_cliente_mock)
 
-# 	# Act
-# 	var estado = Api.RegistrarNodo(identificador)
+		# Act
+		var resultado_obtenido= Api.Conectar(tc.testData.nombre, tc.testData.id, tc.testData.ip, tc.testData.puerto)
 
-# 	# Assert
-# 	assert_eq(estado, "registro enviado exito")
+		# Assert
+		assert_true(compare_estado_conexion(resultado_obtenido, tc.resultado_esperado))
 
-# func test_enviar_mesaje():
-# 	# Arrange
-# 	var identificador = crear_identificador_default()
-# 	var msj = "this is a test"
 
-# 	# Act
-# 	Api.EnviarMensaje(msj)
+func crear_red_cliente_conectado(): 
+	return RedClienteMock.new(funcref(self, "red_cliente_conectar_conectado"))
 
-# 	# Assert
+func crear_red_cliente_no_conectado(): 
+	return RedClienteMock.new(funcref(self, "red_cliente_conectar_no_conectado"))
 
-	
-# func crear_identificador_default() -> Identificador:
-# 	var nombre = "cliente"
-# 	var id = uuid.v4()
-# 	var identificador = Api.CrearIdentificador(nombre, id)
+func red_cliente_conectar_conectado(_ip, _puerto):
+	return true
 
-# 	return identificador 
+func red_cliente_conectar_no_conectado(_ip, _puerto):
+	return false 
+
+func compare_estado_conexion(obtenido, esperado) -> bool:
+	return obtenido.is_connected == esperado.is_connected
+
