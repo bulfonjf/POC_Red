@@ -20,20 +20,20 @@ _global_script_classes=[ {
 "path": "res://dominio/identificador.gd"
 }, {
 "base": "Reference",
-"class": "Red",
-"language": "GDScript",
-"path": "res://dominio/red.gd"
-}, {
-"base": "Reference",
 "class": "RedClienteMock",
 "language": "GDScript",
 "path": "res://tests/dev/mocks/red_cliente_mock.gd"
+}, {
+"base": "Reference",
+"class": "RedDTO",
+"language": "GDScript",
+"path": "res://dominio/red_dto.gd"
 } ]
 _global_script_class_icons={
 "EstadoConexion": "",
 "Identificador": "",
-"Red": "",
-"RedClienteMock": ""
+"RedClienteMock": "",
+"RedDTO": ""
 }
 
 [application]
